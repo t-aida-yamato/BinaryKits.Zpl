@@ -1,9 +1,12 @@
-﻿using BinaryKits.Zpl.Viewer.WebApi.Models;
+﻿using BinaryKits.Zpl.Viewer.ElementDrawers;
+using BinaryKits.Zpl.Viewer.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace BinaryKits.Zpl.Viewer.WebApi.Controllers
 {
@@ -33,8 +36,36 @@ namespace BinaryKits.Zpl.Viewer.WebApi.Controllers
 
         private ActionResult<RenderResponseDto> RenderZpl(RenderRequestDto request)
         {
+
+            var drawOptions = new DrawerOptions() {
+                FontLoader = fontName => {
+                    if (fontName == "0") {
+                        var sktTypeface = SKTypeface.FromFile(
+                            Path.Combine("Fonts", "RobotoCondensed-Bold.ttf")
+                        );
+                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        return sktTypeface;
+                    }
+                    else if (fontName == "A") {
+                        var sktTypeface = SKTypeface.FromFile(
+                            Path.Combine("Fonts", "NotoSansMono-Regular.ttf")
+                        );
+                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        return sktTypeface;
+                    }
+                    else if (fontName == "Z") {
+                        var sktTypeface = SKTypeface.FromFile(
+                            Path.Combine("Fonts", "NotoSansJP-Regular.ttf")
+                        );
+                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        return sktTypeface;
+                    }
+                    return SKTypeface.Default;
+                }
+            };
+
             IPrinterStorage printerStorage = new PrinterStorage();
-            var drawer = new ZplElementDrawer(printerStorage);
+            var drawer = new ZplElementDrawer(printerStorage, drawOptions);
 
             var analyzer = new ZplAnalyzer(printerStorage);
             var analyzeInfo = analyzer.Analyze(request.ZplData);
