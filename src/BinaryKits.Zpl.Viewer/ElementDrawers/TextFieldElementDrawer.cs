@@ -51,6 +51,7 @@ namespace BinaryKits.Zpl.Viewer.ElementDrawers
 
                 var skFont = new SKFont(typeface, fontSize, scaleX);
                 using var skPaint = new SKPaint(skFont);
+                skPaint.IsAntialias = true;
 
                 string displayText = textField.Text;
                 if (textField.UseHexadecimalIndicator)
