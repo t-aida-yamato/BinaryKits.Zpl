@@ -63,6 +63,7 @@ namespace BinaryKits.Zpl.Viewer.WebApi.Controllers
                     return SKTypeface.Default;
                 }
             };
+            drawOptions.ReplaceDashWithEnDash = false;
 
             IPrinterStorage printerStorage = new PrinterStorage();
             var drawer = new ZplElementDrawer(printerStorage, drawOptions);
