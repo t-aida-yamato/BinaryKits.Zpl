@@ -60,9 +60,16 @@ namespace BinaryKits.Zpl.Viewer.WebApi.Controllers
                         _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
                     }
-                    else if (fontName == "Z") {
+                    else if (fontName == "Y") {
                         var sktTypeface = SKTypeface.FromFile(
                             Path.Combine("Fonts", "NotoSansJP-Regular.ttf")
+                        );
+                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        return sktTypeface;
+                    }
+                    else if (fontName == "Z") {
+                        var sktTypeface = SKTypeface.FromFile(
+                            Path.Combine("Fonts", "NotoSansJP-Bold.ttf")
                         );
                         _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
