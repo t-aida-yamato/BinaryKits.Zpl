@@ -43,35 +43,35 @@ namespace BinaryKits.Zpl.Viewer.WebApi.Controllers
                         var sktTypeface = SKTypeface.FromFile(
                             Path.Combine("Fonts", "RobotoCondensed-Bold.ttf")
                         );
-                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        // _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
                     }
                     else if (fontName == "A") {
                         var sktTypeface = SKTypeface.FromFile(
                             Path.Combine("Fonts", "NotoSansMono-Regular.ttf")
                         );
-                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        // _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
                     }
                     else if (fontName == "X") {
                         var sktTypeface = SKTypeface.FromFile(
                             Path.Combine("Fonts", "tt0003m_.ttf")
                         );
-                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        // _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
                     }
                     else if (fontName == "Y") {
                         var sktTypeface = SKTypeface.FromFile(
                             Path.Combine("Fonts", "NotoSansJP-Regular.ttf")
                         );
-                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        // _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
                     }
                     else if (fontName == "Z") {
                         var sktTypeface = SKTypeface.FromFile(
                             Path.Combine("Fonts", "NotoSansJP-Bold.ttf")
                         );
-                        _logger?.LogInformation(sktTypeface.FamilyName);
+                        // _logger?.LogInformation(sktTypeface.FamilyName);
                         return sktTypeface;
                     }
                     return SKTypeface.Default;
